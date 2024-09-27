@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Quicksand", sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  width: 100%;
+  background: #222431;
+  padding: 40px 20px;
+}
+
+/* Snow */
+#particles-js {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+main {
+  display: grid;
+  grid-template-columns: 45% 55%;
+  place-items: center;
+  background: #f6f6f6;
+  width: min(700px, 95%);
+  border-radius: 20px;
+}
+
+/* Left Side */
+.left-side {
+  width: 390px;
+  height: 100%;
+  background-image: url(https://i.scdn.co/image/ab6765630000ba8ab7469053c97c4a647ca40cce);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  pointer-events: none;
+  border-radius: 20px 0 0 20px;
+}
+
+/* Right Side */
+.right-side {
+  padding: 60px;
+}
+
+/* Button Group */
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 32px;
+}
+
+.btn-group .btn {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  width: max-content;
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 8px 6px;
+  border: 2px solid #6b7280;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  transform: scale(1);
+  cursor: pointer;
+  transition: transform 0.1s ease, background-color 0.5s, color 0.5s;
+}
+
+/* Inputs and Labels */
+input {
+  width: 100%;
+  padding: 12px 20px;
+  border: 2px solid #ccc;
+  outline: 0;
+  border-radius: 5px;
+  background-color: transparent;
+  margin: 4px 0 18px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.5s;
+}
+
+input:focus {
+  border: 2px solid #000;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: #000;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+label {
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Login Button */
+.login-btn {
+  width: 100%;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 24px;
+  margin: 12px 0 24px;
+  border: 2px solid #6b7280;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  cursor: pointer;
+  transition: all 0.5s;
+}
+
+.login-btn:hover {
+  background-color: #000;
+  color: #eee;
+}
+
+/* Links */
+.links {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+a {
+  color: #000;
+  font-size: 0.88rem;
+  font-weight: 600;
+  letter-spacing: -1px;
+  transition: all 0.4s ease;
+}
+
+a:hover {
+  color: rgb(13, 133, 185);
+}
+
+/* Show Password Button */
+.show-password {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #000;
+  font-weight: 600;
+  margin-top: -10px;
+}
+
+@media (max-width: 800px) {
+  main {
+    grid-template-columns: 100%;
+    padding: 20px;
+  }
+
+  .right-side {
+    padding: 40px 20px;
+  }
+
+  .btn-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-group .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .or {
+    font-size: 1rem;
+  }
+}
+
+.xabarInputi:focus {
+  padding: 40px;
+}
+
+@media (max-width: 1050px) {
+  body {
+    padding: 20px; /* Adjust padding for smaller screens */
+  }
+
+  main {
+    padding: 10px; /* Reduce padding for the main container */
+  }
+
+  .left-side {
+    display: none; /* Hide the left side for smaller screens */
+  }
+
+  .right-side {
+    padding: 20px; /* Reduce padding for the right side */
+  }
+
+  input {
+    font-size: 0.8rem; /* Adjust input font size */
+    padding: 10px; /* Reduce padding for input fields */
+  }
+
+  .login-btn {
+    padding: 8px 16px; /* Adjust button padding */
+    font-size: 0.8rem; /* Adjust button font size */
+  }
+
+  .links {
+    flex-direction: column; /* Stack links vertically */
+    align-items: center; /* Center-align links */
+  }
+
+  .links a {
+    margin: 5px 0; /* Add margin between links */
+  }
+  h2{
+    font-size: 18px;
+  }
+}

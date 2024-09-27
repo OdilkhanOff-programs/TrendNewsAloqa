@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div style="position: relative; top: 0px">
+      <h2 style="color: rgb(230, 33, 33)">
+        Assalomu alaykum, siz ushbu joyda TrendNews saytiga o'z xabaringgizni
+        yuborishinggiz mumkin!
+      </h2>
+    </div>
+
+    <main>
+      <div class="left-side"></div>
+      <div class="right-side">
+        <form id="loginForm">
+          <label for="username">Isminggiz</label>
+          <input
+            type="text"
+            placeholder="Isminggizni yozing"
+            name="username"
+            required
+          />
+
+          <label for="xabar">Xabar</label>
+          <input
+            class="xabarInputi"
+            type="text"
+            placeholder="Xabaringgizni yozing"
+            name="xabar"
+            <!--
+            Bu
+            yerda
+            xabar
+            deb
+            belgiladik
+            --
+          />
+          required />
+
+          <label for="date">Sana</label>
+          <input type="date" name="date" required />
+
+          <label for="file">Rasm yuklash</label>
+          <input type="file" name="file" id="file" accept="image/*" required />
+
+          <button type="submit" class="login-btn">Yuborish</button>
+        </form>
+      </div>
+    </main>
+
+    <script>
+      document
+        .getElementById("loginForm")
+        .addEventListener("submit", function (event) {
+          event.preventDefault(); // Formani yuborishni to'xtatadi
+
+          const usernameInput = this.username.value;
+          const xabarInput = this.xabar.value; // Xabarni oling
+          const dateInput = this.date.value; // Sana
+          const fileInput = this.file.files[0]; // Yuklangan fayl
+
+          // Username tekshiruvi
+          if (usernameInput.length < 3) {
+            alert("Username kamida 3 ta belgidan iborat bo'lishi kerak.");
+            return;
+          }
+
+          // Faylni tanlashni tekshirish
+          if (!fileInput) {
+            alert("Iltimos, rasm yuklang.");
+            return;
+          }
+
+          // FormData tayyorlash
+          const formData = new FormData();
+          const personalChatId = "6340507558"; // Shaxsiy xabar uchun
+          const channelChatId = "-1002254691029"; // Kanal ID'si
+
+          // Shaxsiy xabar uchun
+          formData.append("chat_id", personalChatId);
+          formData.append(
+            "caption",
+            `Ism: ${usernameInput}\nXabar: ${xabarInput}\nSana: ${dateInput}`
+          );
+          formData.append("photo", fileInput);
+
+          // Ma'lumotlarni shaxsiy xabar uchun yuborish
+          fetch(
+            `https://api.telegram.org/bot7360409140:AAEXr-VTlK3vjAboh8uMoJea39qDXRcRgbY/sendPhoto`,
+            {
+              method: "POST",
+              body: formData,
+            }
+          )
+            .then((response) => {
+              if (response.ok) {
+                alert("Ma'lumotlar muvaffaqiyatli yuborildi!");
+              } else {
+                alert("Xato: Ma'lumotlarni yuborishda muammo yuzaga keldi.");
+              }
+            })
+            .catch((error) => {
+              alert("Xato: " + error.message);
+            });
+
+          // Kanalga yuborish
+          const channelFormData = new FormData();
+          channelFormData.append("chat_id", channelChatId);
+          channelFormData.append(
+            "caption",
+            `Ism: ${usernameInput}\nXabar: ${xabarInput}\nSana: ${dateInput}`
+          );
+          channelFormData.append("photo", fileInput);
+
+          fetch(
+            `https://api.telegram.org/bot7360409140:AAEXr-VTlK3vjAboh8uMoJea39qDXRcRgbY/sendPhoto`,
+            {
+              method: "POST",
+              body: channelFormData,
+            }
+          )
+            .then((response) => {
+              if (!response.ok) {
+                alert(
+                  "Xato: Kanalga ma'lumotlarni yuborishda muammo yuzaga keldi."
+                );
+              }
+            })
+            .catch((error) => {
+              alert("Xato: " + error.message);
+            });
+        });
+    </script>
+  </body>
+</html>
